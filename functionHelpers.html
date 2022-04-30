@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="libraries/handlebars-v4.7.7.js"></script>
+</head>
+<body>
+  <div id="quoteData"></div>
+
+  <script id="quote-template" type="text/x-handlebars-template">
+    <h3>Favorite {{name}} quotes</h3>
+    <ol>
+      {{#each quotes}}
+      <li>{{quote}}</li>
+      {{/each}}
+    </ol>
+
+    <!-- triple staches is to use HTML data: useful if you don't want to escape HTML tags -->
+    {{{yogiBio}}}
+
+    <p>{{makeLink "Google" "https://www.google.com/"}}</p>
+
+    <p>{{changeColor "Make my text" color="green"}}</p>
+
+    <p>{{sayHello}}</p>
+  </script>
+
+  <script src="scripts/script.js"></script>
+
+  <script type="text/javascript">
+    const quoteInfo = document.getElementById("quote-template").innerHTML;
+    const templateQuote = Handlebars.compile(quoteInfo);
+    const quoteData = templateQuote({
+      name: "Yogi Berra",
+      quotes: [
+        { quote: "Alpha" },
+        { quote: "Beta" },
+        { quote: "Gamma" },
+        { quote: "Delta" }
+      ],
+      yogiBio: "<i>Yogi Berra is the King</i>"
+    }, {data:{
+      lang: "spanish"
+    }});
+
+    document.getElementById("quoteData").innerHTML = quoteData;
+  </script>
+</body>
+</html>

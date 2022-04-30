@@ -1,80 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hello Handlebars</title>
-  </head>
-  <body>
-    <div id="exampleData"></div>
-    <div id="quoteData"></div>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Handlebars Tutorial</title>
+  <script src="libraries/handlebars-v4.7.7.js"></script>  
+</head>
+<body>
+  Welcome to the simple Handlebars Tutorial
+  
+  <p>
+    Select examples from the list below
+  </p>
 
-    <!-- <script src="handlebars-v4.7.7.js"></script> -->
-    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+  <div id="linkData"></div>
 
-    <script id="quote-template" type="text/x-handlebars-template">
-      <p>Favorite {{name}} Quotes</p>
-      <ol>
-        {{#each quotes}}
-          <li>{{quote}}</li>
-        {{/each}}
-      </ol>
+  <!-- The script below is not displayed in the browser-->
+  <script id="link-template" type="text/x-handlebars-template">
+    <ul>
+      <li>{{makeLink "Simple Template" "simpleTemplate.html"}}</li>
+      <li>{{makeLink "Function Helpers" "functionHelpers.html"}}</li>
+      <li>{{makeLink "Block Helpers" "blockHelpers.html"}}</li>
+      <li>{{makeLink "Partial templates" "partialTemplate.html"}}</li>
+      <li>{{makeLink "Another example" "anotherExample.html"}}</li>
+    </ul>
+  </script>
 
-      {{{yogiBio}}}
+  <script src="scripts/script.js"></script>
+  <script type="text/javascript">
+    const linkTemplateHtml = document.getElementById("link-template").innerHTML;
+    const linkTemplate = Handlebars.compile(linkTemplateHtml);
+    const linkTemplateOutput = linkTemplate();
 
-      <p>{{makeLink "Google" "https://www.google.com/"}}</p>
-
-      <p>{{changeColor "Make my text" color="green"}}</p>
-
-      <p>{{sayHello}}</p>
-    </script>
-
-    <div id="contentDiv"></div>
-
-    <script id="the-template" type="text/x-handlebars-template">
-      {{#makeRadio "size"}}
-        Small Medium Large
-      {{/makeRadio}}
-
-      <p>
-        {{#areEqual 1 1}}
-          Numbers are Equal
-        {{else}}
-          Numbers are not Equal
-        {{/areEqual}}
-      </p>
-
-      <p>
-        {{#if "isActive"}}
-          Image for is active
-        {{else}}
-          Image for is not active
-        {{/if}}
-      </p>
-
-      <div class="potter-1">
-        <p>* {{title}} *</p>
-        {{#with techData}}
-          <div class="isbn">{{{isbn}}}</div>
-          <div class="author">{{{author}}}</div>
-        {{/with}}
-      </div>
-    </script>
-
-    <script id="partial" type="text/x-handlebars-template">
-      <div>
-        {{> myname}}</p>
-
-        <div class="post"></div>
-        {{> askQuestion tagName="h2"}}
-        <h2>Suggestions</h2>
-        {{#each comments}}
-          {{>askQuestion tagName="h3"}}
-        {{/each}}
-      </div>
-    </script>
-
-    <script src="myscript.js"></script>
-  </body>
+    document.getElementById("linkData").innerHTML = linkTemplateOutput;
+  </script>
+</body>
 </html>

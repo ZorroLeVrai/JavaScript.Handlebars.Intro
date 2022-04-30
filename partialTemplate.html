@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Partial Templates example</title>
+  <script src="libraries/handlebars-v4.7.7.js"></script>
+</head>
+<body>
+  <div id="contentDiv"></div>
+
+  <script id="the-template" type="text/x-handlebars-template">
+    <div>
+      {{> myName}}</p>
+
+      <div class="post"></div>
+      {{> askQuestion tagName="h2"}}
+      <h2>Suggestions</h2>
+      {{#each comments}}
+        {{>askQuestion tagName="h3"}}
+      {{/each}}
+    </div>
+  </script>
+
+  <script type="text/javascript">
+    let theTemplateInfo = document.getElementById("the-template").innerHTML;
+    let partialTemplate = Handlebars.compile(theTemplateInfo);
+
+    Handlebars.registerPartial("myName", "{{name}}");
+    Handlebars.registerPartial("askQuestion", `<{{tagName}}>{{author}}</{{tagName}}><div class="comment">{{comment}}</div>`);
+
+    let templateData = partialTemplate({
+      name: "Adam",
+      author: "John Doe",
+      comment: "Where is my head ?",
+      comments: [{
+        author: "Alan Watts",
+        comment: "The way of zen"
+      },
+      {
+        author: "Ken Follet",
+        comment: "Never"
+      }]
+    });
+
+    document.getElementById("contentDiv").innerHTML = templateData;
+  </script>
+</body>
+</html>

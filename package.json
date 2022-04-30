@@ -1,0 +1,17 @@
+{
+  "name": "handlebars_tutorial",
+  "version": "1.0.0",
+  "description": "Handlebars tutorial for front-end",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Handlebars"
+  ],
+  "author": "Amine BELBAHAR",
+  "license": "ISC",
+  "dependencies": {
+    "handlebars": "^4.7.7"
+  }
+}
