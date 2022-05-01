@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Partial Templates example</title>
-  <script src="libraries/handlebars-v4.7.7.js"></script>
-  <script src="items.js"></script>
-</head>
-<body>
-  <div id="contentDiv"></div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Partial Templates example</title>
+    <script src="libraries/handlebars-v4.7.7.js"></script>
+    <script src="items.js"></script>
+  </head>
+  <body>
+    <div id="contentDiv"></div>
 
-  <!-- THIS WAS REPLACED BY the items.handlebars file -->
-  <!-- <script id="the-template" type="text/x-handlebars-template">
+    <!-- THIS WAS REPLACED BY the items.js file generated from the items.handlebars file -->
+    <!-- <script id="the-template" type="text/x-handlebars-template">
     {{#each items}}
       <div>
         <p>Item: {{this.item}}</p>
@@ -20,23 +20,19 @@
     {{/each}}
   </script> -->
 
-  <script type="text/javascript">
-    // let theTemplateInfo = document.getElementById("the-template").innerHTML;
-    // let template = Handlebars.compile(theTemplateInfo);
+    <script type="text/javascript">
+      // let theTemplateInfo = document.getElementById("the-template").innerHTML;
+      // let template = Handlebars.compile(theTemplateInfo);
 
-    const template = Handlebars.templates['items'];
+      const template = Handlebars.templates["items"];
 
-    const context = {
-      items: [
-        { item: "Pizza" },
-        { item: "Banana" },
-        { item: "Chocolate" }
-      ]
-    };
+      const context = {
+        items: [{ item: "Pizza" }, { item: "Banana" }, { item: "Chocolate" }],
+      };
 
-    let templateData = template(context);
+      let templateData = template(context);
 
-    document.getElementById("contentDiv").innerHTML = templateData;
-  </script>
-</body>
+      document.getElementById("contentDiv").innerHTML = templateData;
+    </script>
+  </body>
 </html>
